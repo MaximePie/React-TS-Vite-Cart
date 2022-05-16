@@ -14,7 +14,8 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "@storybook/react": "^6.4.22"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -22,7 +23,6 @@
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
     "@storybook/addon-links": "^6.4.22",
-    "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.11",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
