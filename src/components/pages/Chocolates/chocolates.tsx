@@ -7,11 +7,23 @@ type Product = {
   name: String,
 }
 
+type ChocolatesProps = {
+  isWrongPath?: boolean,
+}
+
+/**
+ * isWrongPath est optionnelle, cette props a besoin d'une valeur par défaut
+ */
+Chocolates.defaultProps = {
+  isWrongPath: false,
+};
+
 /**
  * Ce composant utilise la méthode 1 pour récupérer des données : Axios, useState
  */
-export default function Chocolates() {
+export default function Chocolates({ isWrongPath }: ChocolatesProps) {
   const [chocolates, setChocolates] = useState<Product[]>([]);
+  const [error, setError] = useState(''); // Inutile de préciser le type, c'est déjà fait dans l'initialisation
   let isMounted = false;
 
   useEffect(onMount, []);
@@ -19,13 +31,19 @@ export default function Chocolates() {
   return (
     <div>
       <h4>Chocolats</h4>
-      {chocolates.map((chocolate) => (
-        <p
-          key={chocolate._id.toString()}
-        >
-          {JSON.stringify(chocolate)}
-        </p>
-      ))}
+      {error
+        ? (
+          <p style={{ color: 'red' }}>
+            {error}
+          </p>
+        )
+        : chocolates.map((chocolate) => (
+          <p
+            key={chocolate._id.toString()}
+          >
+            {JSON.stringify(chocolate)}
+          </p>
+        ))}
     </div>
   );
 
@@ -46,10 +64,21 @@ export default function Chocolates() {
   }
 
   function fetchChocolate() {
-    const url = 'http://localhost:4001/chocolates/';
+    let url = 'http://localhost:4001/chocolates/';
+
+    if (isWrongPath) {
+      url += '/wrong';
+    }
+
     axios.get(url)
       .then((response) => {
+        setError('');
         setChocolates(response.data);
+      })
+      .catch((serverError) => {
+        setChocolates([]);
+        console.log(serverError);
+        setError(serverError.response.data);
       });
   }
 }

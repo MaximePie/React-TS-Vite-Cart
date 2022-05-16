@@ -25,6 +25,7 @@ function AppContainer() {
           <Route path="/chocolates" element={<Chocolates />} />
           <Route path="/treats" element={<Treats />} />
           <Route path="/pastries" element={<Pastries />} />
+          <Route path="/wrong" element={<Chocolates isWrongPath />} />
           <Route path="/total" element={<Total />} />
         </Routes>
       </App>
