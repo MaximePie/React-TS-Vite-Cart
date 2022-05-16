@@ -1,18 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import StyledError from './style';
+import ErrorProps from './types';
+import { errors } from './data';
 
-type ErrorProps = {
-  message: String,
-}
-
-const StyledError = styled.div`
-  color: red;
-`;
-
-export default function Error({ message }: ErrorProps) {
-  return (
-    <StyledError>
-      {message}
-    </StyledError>
-  );
+export default function Error({ code }: ErrorProps) {
+  const error = errors[code];
+  if (error) {
+    const { title, content } = error;
+    return (
+      <StyledError>
+        <h4>
+          {title}
+        </h4>
+        {content}
+      </StyledError>
+    );
+  }
+  return null;
 }

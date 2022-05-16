@@ -6,7 +6,7 @@ async function get(request, response) {
 }
 
 async function wrongGet(request, response) {
-  response.status(400).json('Erreur, il y a eu une erreur.');
+  response.status(400).json(1);
 }
 
 function create(request, response) {
