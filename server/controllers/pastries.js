@@ -1,8 +1,8 @@
 import Product from '../models/Product.js';
 
 async function get(request, response) {
-  const chocolates = await Product.findChocolates({});
-  response.json(chocolates);
+  const pastries = await Product.findPastries();
+  response.json(pastries);
 }
 
 function create(request, response) {
@@ -14,8 +14,8 @@ function create(request, response) {
  * Only use it for dev purpose.
  */
 async function mock(request, response) {
-  const products = await Product.fake(2, {
-    category: 'chocolate',
+  const products = await Product.fake(50, {
+    category: 'pastries',
   });
   response.json({
     message: 'Created',

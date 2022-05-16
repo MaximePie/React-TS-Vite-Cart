@@ -26,6 +26,18 @@ ProductSchema.statics = {
     });
   },
 
+  async findPastries() {
+    return Product.find({
+      category: 'pastries',
+    });
+  },
+
+  async findTreats() {
+    return Product.find({
+      category: 'treats',
+    });
+  },
+
   /**
    * Create Amount number of products with the provided values parameters
    * Using Faker
@@ -36,7 +48,7 @@ ProductSchema.statics = {
   async fake(amount = 5, values = {}) {
     const { category } = values;
     if (amount > 0) {
-      const categories = ['chocolate'];
+      const categories = ['chocolate', 'pastries', 'treats'];
       const products = [];
 
       for (let currentProductIndex = 0; currentProductIndex < amount; currentProductIndex += 1) {
