@@ -1,12 +1,27 @@
 import Product from '../models/Product.js';
 
 async function get(request, response) {
-  const chocolates = await Product.findChocolates({});
-  response.json(chocolates);
+  const chocolates = await Product.find({});
+  response.json({ chocolates, message: 'haha' });
 }
 
 function create(request, response) {
   response.json(null);
 }
 
-export { get, create };
+/**
+ * Create a bunch of chocolate products
+ * Only use it for dev purpose.
+ */
+async function mock(request, response) {
+  const products = await Product.fake(2, {
+    category: 'chocolate',
+  });
+  response.json({
+    message: 'Created',
+    products,
+    amount: products?.length,
+  });
+}
+
+export { get, create, mock };

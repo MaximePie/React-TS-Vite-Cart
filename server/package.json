@@ -18,5 +18,8 @@
     "express-formidable": "^1.2.0",
     "mongoose": "^6.3.3",
     "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1"
   }
 }
