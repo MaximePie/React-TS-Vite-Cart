@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ChocolatesProps from './types';
-import Product from '../../../types/Product';
+import useChocolates from './useChocolates';
 
 /**
  * isWrongPath est optionnelle, cette props a besoin d'une valeur par défaut
@@ -13,12 +12,8 @@ Chocolates.defaultProps = {
 /**
  * Ce composant utilise la méthode 1 pour récupérer des données : Axios, useState
  */
-export default function Chocolates({ isWrongPath }: ChocolatesProps) {
-  const [chocolates, setChocolates] = useState<Product[]>([]);
-  const [error, setError] = useState(''); // Inutile de préciser le type, c'est déjà fait dans l'initialisation
-  let isMounted = false;
-
-  useEffect(onMount, []);
+export default function Chocolates(props: ChocolatesProps) {
+  const { chocolates, error } = useChocolates(props);
 
   return (
     <div>
@@ -38,39 +33,4 @@ export default function Chocolates({ isWrongPath }: ChocolatesProps) {
         ))}
     </div>
   );
-
-  function onMount() {
-    isMounted = true;
-    if (isMounted) {
-      fetchChocolate();
-    }
-
-    // Tous les useEffect doivent renvoyer une fonction de nettoyage.
-    // Cette fonction est appelée lors du démontage du composant
-    /**
-     * @see https://overreacted.io/a-complete-guide-to-useeffect/#so-what-about-cleanup
-     */
-    return () => {
-      isMounted = false;
-    };
-  }
-
-  function fetchChocolate() {
-    let url = 'http://localhost:4001/chocolates/';
-
-    if (isWrongPath) {
-      url += '/wrong';
-    }
-
-    axios.get(url)
-      .then((response) => {
-        setError('');
-        setChocolates(response.data);
-      })
-      .catch((serverError) => {
-        setChocolates([]);
-        console.log(serverError);
-        setError(serverError.response.data);
-      });
-  }
 }
