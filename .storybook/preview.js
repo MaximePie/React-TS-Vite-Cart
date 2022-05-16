@@ -7,3 +7,11 @@ export const parameters = {
     },
   },
 }
+
+export const decorators = [
+  (Story) => (
+    <div style={{ margin: '3em', border: 'solid 1px gray' }}>
+      <Story />
+    </div>
+  ),
+];

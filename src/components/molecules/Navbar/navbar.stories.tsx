@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from './navbar';
 
 export default {
-  title: 'Example/Navbara',
+  title: 'Example/Navbar',
   component: Navbar,
 } as ComponentMeta<typeof Navbar>;
 

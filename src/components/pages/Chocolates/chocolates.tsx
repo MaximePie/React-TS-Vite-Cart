@@ -1,7 +1,7 @@
 import React from 'react';
 import ChocolatesProps from './types';
 import useChocolates from './useChocolates';
-import Error from '../../molecules/Error';
+import Error from '../../molecules/Error/Error';
 
 /**
  * isWrongPath est optionnelle, cette props a besoin d'une valeur par défaut
