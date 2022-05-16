@@ -1,8 +1,12 @@
 import Product from '../models/Product.js';
 
 async function get(request, response) {
-  const chocolates = await Product.findChocolates({});
+  const chocolates = await Product.findChocolates();
   response.json(chocolates);
+}
+
+async function wrongGet(request, response) {
+  response.status(400).json('Erreur, il y a eu une erreur.');
 }
 
 function create(request, response) {
@@ -25,5 +29,5 @@ async function mock(request, response) {
 }
 
 export {
-  get, create, mock,
+  get, create, mock, wrongGet,
 };

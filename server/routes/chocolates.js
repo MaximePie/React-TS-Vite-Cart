@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/', get);
 router.get('/mock', mock);
+router.get('/wrong', wrongGet);
 
 export default router;
