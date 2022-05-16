@@ -24,4 +24,6 @@ async function mock(request, response) {
   });
 }
 
-export { get, create, mock };
+export {
+  get, create, mock,
+};

@@ -1,5 +1,5 @@
 import express from 'express';
-import { get, mock } from '../controllers/chocolates.js';
+import { get, mock, wrongGet } from '../controllers/chocolates.js';
 
 const router = express.Router();
 
