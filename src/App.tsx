@@ -11,7 +11,7 @@ import Navbar from './components/molecules/Navbar/navbar';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div>
         <Navbar />
         <h1>Interface de commande</h1>
         <Routes>
