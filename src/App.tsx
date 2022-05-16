@@ -1,17 +1,23 @@
 import React from 'react';
 import {
-  BrowserRouter, Routes, Route, NavLink,
+  BrowserRouter, Routes, Route,
 } from 'react-router-dom';
+import styled from 'styled-components';
 import Chocolates from './components/pages/Chocolates/chocolates';
 import Treats from './components/pages/Treats/treats';
 import Pastries from './components/pages/Pastries/pastries';
 import Total from './components/pages/Total/total';
 import Navbar from './components/molecules/Navbar/navbar';
 
-function App() {
+const App = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  font-family: 'Roboto', sans-serif;
+`;
+
+function AppContainer() {
   return (
     <BrowserRouter>
-      <div>
+      <App>
         <Navbar />
         <h1>Interface de commande</h1>
         <Routes>
@@ -21,9 +27,9 @@ function App() {
           <Route path="/pastries" element={<Pastries />} />
           <Route path="/total" element={<Total />} />
         </Routes>
-      </div>
+      </App>
     </BrowserRouter>
   );
 }
 
-export default App;
+export default AppContainer;
