@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { ObjectId } from 'bson';
-
-type Product = {
-  _id: ObjectId,
-  name: String,
-}
-
-type ChocolatesProps = {
-  isWrongPath?: boolean,
-}
+import ChocolatesProps from './types';
+import Product from '../../../types/Product';
 
 /**
  * isWrongPath est optionnelle, cette props a besoin d'une valeur par défaut
