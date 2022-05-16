@@ -1,6 +1,7 @@
 import React from 'react';
 import ChocolatesProps from './types';
 import useChocolates from './useChocolates';
+import Error from '../../molecules/Error';
 
 /**
  * isWrongPath est optionnelle, cette props a besoin d'une valeur par défaut
@@ -19,11 +20,7 @@ export default function Chocolates(props: ChocolatesProps) {
     <div>
       <h4>Chocolats</h4>
       {error
-        ? (
-          <p style={{ color: 'red' }}>
-            {error}
-          </p>
-        )
+        ? <Error message={error} />
         : chocolates.map((chocolate) => (
           <p
             key={chocolate._id.toString()}

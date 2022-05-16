@@ -22,10 +22,10 @@ function AppContainer() {
         <h1>Interface de commande</h1>
         <Routes>
           <Route path="/" element={<Chocolates />} />
-          <Route path="/chocolates" element={<Chocolates />} />
+          <Route path="/chocolates" element={<Chocolates key="chocolates" />} />
           <Route path="/treats" element={<Treats />} />
           <Route path="/pastries" element={<Pastries />} />
-          <Route path="/wrong" element={<Chocolates isWrongPath />} />
+          <Route path="/wrong" element={<Chocolates isWrongPath key="error" />} />
           <Route path="/total" element={<Total />} />
         </Routes>
       </App>
