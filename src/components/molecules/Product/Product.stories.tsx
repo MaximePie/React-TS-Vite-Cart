@@ -1,10 +1,8 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ObjectId } from 'bson';
-import faker from '@faker-js/faker';
 import Product from './Product';
-import ProductType from '../../../types/Product';
 import ProductProps from './types';
+import { fake } from '../../../utils/product';
 
 export default {
   title: 'Example/Product',
@@ -25,20 +23,3 @@ export const LongName = Template.bind({});
 LongName.args = {
   product: fake('longname'),
 };
-
-type FakeOptions = '' | 'longname';
-
-/**
- * Generates a fake product
- */
-function fake(option: FakeOptions = ''): ProductType {
-  let productName = faker.commerce.product();
-  if (option === 'longname') {
-    productName = productName.repeat(10);
-  }
-  return {
-    name: productName,
-    _id: new ObjectId(),
-    price: parseFloat(faker.commerce.price()),
-  };
-}
