@@ -11,4 +11,24 @@ const colors = {
 
 };
 
-export { spacings, colors, fontSizes };
+const cardBorder = `
+  border: 1px gray solid;
+  border-radius: 4px;
+`;
+
+function flex(
+  direction = 'row',
+  justifyContent = 'center',
+  alignItems = 'center',
+): string {
+  return `
+    display: flex;
+    flex-direction: ${direction};
+    justify-content: ${justifyContent};
+    align-items: ${alignItems};
+  `;
+}
+
+export {
+  spacings, colors, fontSizes, cardBorder, flex,
+};

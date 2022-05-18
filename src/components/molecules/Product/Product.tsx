@@ -1,10 +1,13 @@
 import React from 'react';
+import { StyledProduct, ProductName } from './styles';
 import ProductProps from './types';
 
 export default function Product({ product }: ProductProps) {
+  const { name } = product;
+
   return (
-    <div className="Product">
-      <p>Product</p>
-    </div>
+    <StyledProduct>
+      <ProductName title={name}>{name}</ProductName>
+    </StyledProduct>
   );
 }
