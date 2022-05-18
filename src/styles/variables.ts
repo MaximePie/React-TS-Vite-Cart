@@ -1,6 +1,7 @@
 const spacings = {
   medium: '1em',
   small: '0.5em',
+  smaller: '0.25em',
 };
 
 const fontSizes = {

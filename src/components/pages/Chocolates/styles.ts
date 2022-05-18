@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { flex } from '../../../styles/variables';
+import { flex, spacings } from '../../../styles/variables';
 
 const StyledChocolates = styled.div`
-  ${flex()};
+  margin-top: ${spacings.medium};
+  ${flex('row', 'start')};
   
   flex-wrap: wrap;
 `;

@@ -1,30 +1,35 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import { flex } from '../../../styles/variables';
-
-const StyledCart = styled.div`
-`;
-
-const Product = styled.div`
-  ${flex()};
-`;
-
-const Header = styled.h4`
-`;
+import { remove } from '../../../redux/productSlice';
+import {
+  Header, StyledCart, Total, Product, DeleteButton,
+} from './styles';
 
 export default function Cart() {
-  const cart = useSelector((state: RootState) => state.product.cart);
+  const { cart, total } = useSelector((state: RootState) => state.product);
+
+  const dispatch = useDispatch();
 
   return (
     <StyledCart>
       <Header>
         Votre commande
       </Header>
-      {cart.map((product) => (
+      <Total>
+        {`Total: ${total} €`}
+      </Total>
+      {cart.map(({ name, price, _id }) => (
         <Product>
-          {product.name}
+          <span>
+            {name}
+          </span>
+          <span>
+            {price}
+            €
+
+            <DeleteButton type="button" onClick={() => dispatch(remove(_id))}>X</DeleteButton>
+          </span>
         </Product>
       ))}
     </StyledCart>

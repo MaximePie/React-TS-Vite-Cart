@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { spacings, cardBorder, flex } from '../../../styles/variables';
 
 const StyledProduct = styled.div`
+  
+  // Positioning
+  margin: 0 ${spacings.small} ${spacings.small} 0;
+  
+  // Shape
   ${cardBorder};
 
   width: 150px;
