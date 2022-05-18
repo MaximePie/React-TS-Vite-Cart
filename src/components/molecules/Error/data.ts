@@ -10,8 +10,11 @@ const errors = {
   },
 };
 
+// eslint-disable-next-line no-shadow,no-unused-vars
 enum Codes {
+  // eslint-disable-next-line no-unused-vars
   Default = 1,
+  // eslint-disable-next-line no-unused-vars
   Long = 500,
 }
 
