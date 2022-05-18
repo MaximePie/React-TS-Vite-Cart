@@ -21,7 +21,7 @@ export default function Chocolates(props: ChocolatesProps) {
     <div>
       <h4>Chocolats</h4>
       {error
-        ? <Error code={Codes.Default} />
+        ? <Error code={error} />
         : chocolates.map((chocolate) => (
           <p
             key={chocolate._id.toString()}

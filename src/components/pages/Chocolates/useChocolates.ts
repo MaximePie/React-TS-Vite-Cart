@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Product from '../../../types/Product';
 import ChocolatesProps from './types';
+import ErrorCode from '../../../types/ErrorCode';
 
 export default function useChocolates({ isWrongPath }: ChocolatesProps) {
   const [chocolates, setChocolates] = useState<Product[]>([]);
-  const [error, setError] = useState(''); // Inutile de préciser le type, c'est déjà fait dans l'initialisation
+  // const [chocolate, setChocolate] = useState<Product>({} as Product);
+  // const [chocolate, setChocolate] = useState<Product | undefined>(undefined);
+
+  const [error, setError] = useState<ErrorCode | undefined>(undefined);
   let isMounted = false;
 
   useEffect(onMount, []);
@@ -35,7 +39,7 @@ export default function useChocolates({ isWrongPath }: ChocolatesProps) {
 
     axios.get(url)
       .then((response) => {
-        setError('');
+        setError(undefined);
         setChocolates(response.data);
       })
       .catch((serverError) => {
