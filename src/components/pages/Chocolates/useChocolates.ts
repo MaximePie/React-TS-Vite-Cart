@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Product from '../../../types/Product';
 import ChocolatesProps from './types';
 import ErrorCode from '../../../types/ErrorCode';
+import { RootState } from '../../../redux/store';
 
 export default function useChocolates({ isWrongPath }: ChocolatesProps) {
   const [chocolates, setChocolates] = useState<Product[]>([]);
   // const [chocolate, setChocolate] = useState<Product>({} as Product);
   // const [chocolate, setChocolate] = useState<Product | undefined>(undefined);
+  const cart = useSelector((state: RootState) => state.product.cart);
 
   const [error, setError] = useState<ErrorCode | undefined>(undefined);
   let isMounted = false;
@@ -48,5 +51,5 @@ export default function useChocolates({ isWrongPath }: ChocolatesProps) {
       });
   }
 
-  return { chocolates, error };
+  return { chocolates, error, cart };
 }

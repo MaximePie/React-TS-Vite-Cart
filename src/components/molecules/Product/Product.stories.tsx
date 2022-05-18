@@ -39,5 +39,6 @@ function fake(option: FakeOptions = ''): ProductType {
   return {
     name: productName,
     _id: new ObjectId(),
+    price: parseFloat(faker.commerce.price()),
   };
 }
