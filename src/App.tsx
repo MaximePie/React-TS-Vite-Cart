@@ -3,6 +3,8 @@ import {
   BrowserRouter, Routes, Route,
 } from 'react-router-dom';
 import styled from 'styled-components';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import Chocolates from './components/pages/Chocolates/chocolates';
 import Treats from './components/pages/Treats/treats';
 import Pastries from './components/pages/Pastries/pastries';
@@ -16,20 +18,22 @@ const App = styled.div`
 
 function AppContainer() {
   return (
-    <BrowserRouter>
-      <App>
-        <Navbar />
-        <h1>Interface de commande</h1>
-        <Routes>
-          <Route path="/" element={<Chocolates />} />
-          <Route path="/chocolates" element={<Chocolates key="chocolates" />} />
-          <Route path="/treats" element={<Treats />} />
-          <Route path="/pastries" element={<Pastries />} />
-          <Route path="/wrong" element={<Chocolates isWrongPath key="error" />} />
-          <Route path="/total" element={<Total />} />
-        </Routes>
-      </App>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App>
+          <Navbar />
+          <h1>Interface de commande</h1>
+          <Routes>
+            <Route path="/" element={<Chocolates />} />
+            <Route path="/chocolates" element={<Chocolates key="chocolates" />} />
+            <Route path="/treats" element={<Treats />} />
+            <Route path="/pastries" element={<Pastries />} />
+            <Route path="/wrong" element={<Chocolates isWrongPath key="error" />} />
+            <Route path="/total" element={<Total />} />
+          </Routes>
+        </App>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

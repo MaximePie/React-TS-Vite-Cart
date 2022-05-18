@@ -5,6 +5,7 @@ const StyledProduct = styled.div`
   ${cardBorder};
 
   width: 150px;
+  height: 150px;
   
   // Content
   padding: ${spacings.medium};
@@ -12,6 +13,7 @@ const StyledProduct = styled.div`
 `;
 
 const ProductName = styled.h4`
+  margin: ${spacings.small};
   max-width: 100%;
   overflow:hidden;
   white-space: nowrap;
