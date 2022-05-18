@@ -1,29 +1,47 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ObjectId } from 'bson';
+import Product from '../types/Product';
+
+interface ProductState {
+  value: number,
+  cart: Product[],
+}
+
+const initialState: ProductState = {
+  value: 0,
+  cart: [],
+};
 
 export const productSlice = createSlice({
   name: 'product',
-  initialState: {
-    value: 0,
-  },
+  initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
+
+    /**
+     * Ajoute un produit dans le panier
+     * @param state
+     * @param action L'action fournie lors de l'appel de dispatch
+     */
+    add: (state, action: PayloadAction<Product>) => {
+      const { payload } = action;
+      state.cart.push(payload);
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+
+    /**
+     * Retire un produit du panier
+     * @param state
+     * @param action Contient l'id du produit à retirer du panier
+     */
+    remove: (state, action: PayloadAction<ObjectId>) => {
+      state.cart = [...state.cart].filter(({ _id }) => _id !== action.payload);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = productSlice.actions;
+export const {
+  add, remove,
+} = productSlice.actions;
 
 export default productSlice.reducer;

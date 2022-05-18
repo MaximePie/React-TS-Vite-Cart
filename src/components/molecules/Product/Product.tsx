@@ -1,19 +1,24 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { StyledProduct, ProductName } from './styles';
+import { StyledProduct, Name, Price } from './styles';
 import ProductProps from './types';
-import { increment } from '../../../redux/productSlice';
+import { add, remove } from '../../../redux/productSlice';
 
 export default function Product({ product }: ProductProps) {
-  const { name } = product;
+  const { name, price, _id } = product;
   const dispatch = useDispatch();
 
   return (
     <StyledProduct>
-      <ProductName title={name}>{name}</ProductName>
+      <Name title={name}>{name}</Name>
+      <button type="button" onClick={() => dispatch(remove(_id))}>Delete</button>
+      <Price>
+        {price}
+        €
+      </Price>
       <button
         type="button"
-        onClick={() => dispatch(increment())}
+        onClick={() => dispatch(add(product))}
       >
         Ajouter
       </button>

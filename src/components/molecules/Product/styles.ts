@@ -12,7 +12,7 @@ const StyledProduct = styled.div`
   ${flex('column')};
 `;
 
-const ProductName = styled.h4`
+const Name = styled.h4`
   margin: ${spacings.small};
   max-width: 100%;
   overflow:hidden;
@@ -20,4 +20,7 @@ const ProductName = styled.h4`
   text-overflow: ellipsis;
 `;
 
-export { StyledProduct, ProductName };
+const Price = styled.p`
+`;
+
+export { StyledProduct, Name, Price };

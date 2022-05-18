@@ -8,6 +8,7 @@ import { ObjectId } from 'bson';
 type Product = {
   _id: ObjectId,
   name: string,
+  price: number,
 }
 
 export default Product;
