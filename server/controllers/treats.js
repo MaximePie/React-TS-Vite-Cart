@@ -17,7 +17,7 @@ function create(request, response) {
  * Only use it for dev purpose.
  */
 async function mock(request, response) {
-  const products = await Product.fake(500, {
+  const products = await Product.fake(50, {
     category: 'treats',
   });
   response.json({
@@ -27,4 +27,19 @@ async function mock(request, response) {
   });
 }
 
-export { get, create, mock };
+/**
+ * Delete all treats from database
+ * Only use it for dev purpose.
+ */
+async function deleteAll(request, response) {
+  const products = await Product.deleteMany({ category: 'treats' });
+  response.json({
+    message: 'Deleted',
+    products,
+    amount: products?.length,
+  });
+}
+
+export {
+  get, create, mock, deleteAll,
+};
