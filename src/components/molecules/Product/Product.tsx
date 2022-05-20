@@ -11,14 +11,14 @@ export default function Product({ product }: ProductProps) {
   return (
     <StyledProduct>
       <Name title={name}>{name}</Name>
-      <button type="button" onClick={() => dispatch(remove(_id))}>Delete</button>
+      <button type="button" onClick={() => { dispatch(remove(_id)); }}>Delete</button>
       <Price>
         {price}
         €
       </Price>
       <button
         type="button"
-        onClick={() => dispatch(add(product))}
+        onClick={() => { dispatch(add(product)); }}
       >
         Ajouter
       </button>

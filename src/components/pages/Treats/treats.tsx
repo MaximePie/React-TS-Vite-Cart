@@ -1,9 +1,26 @@
 import React from 'react';
+import useTreats from './useTreats';
+import Product from '../../molecules/Product/Product';
+import { Loading, StyledTreats } from './styles';
+import Error from '../../molecules/Error/Error';
 
 export default function Treats() {
+  const {
+    treats, errorCode, isLoading, reload,
+  } = useTreats();
+
   return (
-    <div>
+    <>
       <h4>Friandises</h4>
-    </div>
+      <button type="button" onClick={reload}>Recharger</button>
+      {errorCode && <Error code={errorCode} />}
+      {isLoading && <Loading>Chargement</Loading>}
+
+      {treats && (
+      <StyledTreats>
+        {treats.map((treat) => <Product key={treat._id.toString()} product={treat} />)}
+      </StyledTreats>
+      )}
+    </>
   );
 }

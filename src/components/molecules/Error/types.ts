@@ -1,7 +1,7 @@
-import { errors } from './data';
+import ErrorCode from '../../../types/ErrorCode';
 
 type ErrorProps = {
-  code: keyof typeof errors,
+  code: ErrorCode,
 }
 
 export default ErrorProps;

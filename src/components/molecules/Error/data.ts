@@ -1,7 +1,14 @@
+/* eslint-disable no-unused-vars */
+
 const errors = {
   1: {
     title: 'Erreur générique',
     content: 'Il y a eu une erreur',
+  },
+
+  2: {
+    title: 'Erreur volontaire',
+    content: "Il y a eu une erreur, mais cette fois c'est volontaire",
   },
 
   500: {
@@ -14,6 +21,10 @@ const errors = {
 enum Codes {
   // eslint-disable-next-line no-unused-vars
   Default = 1,
+
+  // eslint-disable-next-line no-unused-vars
+  Voluntary,
+
   // eslint-disable-next-line no-unused-vars
   Long = 500,
 }

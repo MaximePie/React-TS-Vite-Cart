@@ -1,14 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
 import { remove } from '../../../redux/productSlice';
 import {
   Header, StyledCart, Total, Product, DeleteButton,
 } from './styles';
+import { RootState } from '../../../redux/store';
 
 export default function Cart() {
   const { cart, total } = useSelector((state: RootState) => state.product);
-
   const dispatch = useDispatch();
 
   return (
