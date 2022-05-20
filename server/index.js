@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import formidableMiddleware from 'express-formidable';
 import chocolatesRoute from './routes/chocolates.js';
 import pastriesRoute from './routes/pastries.js';
 import treatsRoute from './routes/treats.js';
@@ -14,6 +15,7 @@ connect(url).then(() => {
   const app = express();
 
   app.use(cors());
+  app.use(formidableMiddleware());
 
   app.use('/chocolates', chocolatesRoute);
   app.use('/treats', treatsRoute);

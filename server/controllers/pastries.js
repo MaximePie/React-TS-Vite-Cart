@@ -5,8 +5,9 @@ async function get(request, response) {
   response.json(pastries);
 }
 
-function create(request, response) {
-  response.json(null);
+async function create(request, response) {
+  const pastry = await Product.create(request.fields.pastry);
+  response.json(pastry);
 }
 
 /**

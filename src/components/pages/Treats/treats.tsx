@@ -6,13 +6,14 @@ import Error from '../../molecules/Error/Error';
 
 export default function Treats() {
   const {
-    treats, errorCode, isLoading, reload,
+    treats, errorCode, isLoading, reload, mutation,
   } = useTreats();
 
   return (
     <>
       <h4>Friandises</h4>
       <button type="button" onClick={reload}>Recharger</button>
+      <button type="button" onClick={() => mutation.mutate()}>Créer</button>
       {errorCode && <Error code={errorCode} />}
       {isLoading && <Loading>Chargement</Loading>}
 

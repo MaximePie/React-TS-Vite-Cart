@@ -9,8 +9,15 @@ async function get(request, response) {
   response.json(pastries);
 }
 
-function create(request, response) {
-  response.json(null);
+async function create(request, response) {
+  const newTreat = {
+    category: request.fields.category,
+    name: request.fields.name,
+    price: request.fields.price,
+  };
+  const treat = await Product.create(newTreat);
+  console.log(treat);
+  response.json(treat);
 }
 
 /**
