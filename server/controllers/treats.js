@@ -1,7 +1,8 @@
 import Product from '../models/Product.js';
 
 async function get(request, response) {
-  const pastries = await Product.findTreats();
+  const { limit } = request.query;
+  const pastries = await Product.findTreats(limit);
 
   // Activer cette ligne pour générer une erreur
   // response.status(500).json(2);

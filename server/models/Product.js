@@ -32,10 +32,10 @@ ProductSchema.statics = {
     });
   },
 
-  async findTreats() {
+  async findTreats(limit = 1000) {
     return Product.find({
       category: 'treats',
-    });
+    }).limit(limit);
   },
 
   /**
